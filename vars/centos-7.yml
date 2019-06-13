@@ -1,0 +1,18 @@
+---
+# CentOS-7 specific variables
+
+install_foreman_repos:
+  "1.20":
+    - name:
+      package: "https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm"
+    - name:
+      package: "http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+    - name:
+      package: "ttps://yum.theforeman.org/releases/1.20/el7/x86_64/foreman-release.rpm"
+  "1.22":
+    - name:
+      package: "https://yum.puppetlabs.com/puppet6/puppet6-release-el-7.noarch.rpm"
+    - name:
+      package: "http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+    - name:
+      package: "https://yum.theforeman.org/releases/1.22/el7/x86_64/foreman-release.rpm"

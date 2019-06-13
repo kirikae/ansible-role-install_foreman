@@ -1,0 +1,25 @@
+---
+- name: "FIREWALL | Install firewalld"
+  package:
+    name: firewalld
+    state: present
+
+- name: "FIREWALL | Gather Service facts"
+  service_facts:
+
+- name: "FIREWALL | Enable and start firewalld"
+  service:
+    name: firewalld
+    state: started
+    enabled: true
+  when: >
+    services['firewalld.service']['status'] != 'enabled'
+    or services['firewalld.service']['status'] != 'running'
+
+- name: "FIREWALL | Open firewalld ports"
+  firewalld:
+    port: "{{ item }}"
+    state: enabled
+    immediate: true
+    permanent: true
+  loop: "{{ install_foreman_firewall_ports + install_foreman_plugin_ports }}"

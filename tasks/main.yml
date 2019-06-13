@@ -1,2 +1,16 @@
 ---
 # tasks file for kirikae.install_foreman
+
+- include_tasks: set_facts.yml
+- include_tasks: prerequisites.yml
+- include_tasks: register.yml
+  when: >
+    (install_foreman_satellite |bool) and
+    (install_foreman_is_connected |bool)
+- include_tasks: repositories.yml
+  when: >
+    not(install_foreman_satellite |bool)
+- include_tasks: firewall.yml
+- include_tasks: packages.yml
+- include_tasks: application.yml
+- include_tasks: configure.yml

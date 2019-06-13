@@ -1,0 +1,49 @@
+---
+- name: "REGISTER | Register the system with Red Hat"
+  redhat_subscription:
+    consumer_name: "{{ install_foreman_hostname_fqdn }}"
+    username: "{{ install_foreman_rhn_username }}"
+    password: "{{ install_foreman_rhn_password }}"
+    state: present
+
+- name: "REGISTER | Check for existing subscription"
+  shell: |
+    /usr/sbin/subscription-manager list
+    --consumed
+    --matches='Satellite*'
+    | awk '/Pool ID/ {print $3}'
+  register: install_foreman_satellite_subscription
+  tags:
+    - skip_ansible_lint # ANSIBLE0012
+
+- name: "REGISTER | Get RHN Satellite Pool ID"
+  shell: |
+    /usr/sbin/subscription-manager list
+    --all
+    --available
+    --matches='Satellite*'
+    | awk '/Pool ID/ {print $3}'
+    | head -1
+  register: install_foreman_satellite_pool_id_result
+  when: install_foreman_satellite_pool_id is undefined
+  tags:
+    - skip_ansible_lint # ANSIBLE0012
+
+- name: "REGISTER | Set pool_id fact"
+  set_fact:
+    install_foreman_satellite_pool_id: "{{
+      install_foreman_satellite_pool_id_result.stdout }}"
+  when: install_foreman_satellite_pool_id is undefined
+
+- name: "REGISTER | Subscribe to the Satellite Pool"
+  redhat_subscription:
+    username: "{{ install_foreman_rhn_username }}"
+    password: "{{ install_foreman_rhn_password }}"
+    pool_ids: "{{ install_foreman_satellite_pool_id }}"
+    state: present
+
+- name: "REGISTER | Enable the Satellite Repositories"
+  rhsm_repository:
+    name: "{{ install_foreman_satellite_repos[install_foreman_satellite_version | string] }}"
+    purge: true
+    state: enabled
