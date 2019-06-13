@@ -1,5 +1,5 @@
 ---
-- name: Set remote_manifest fact
+- name: "FACTS | Set remote_manifest fact"
   set_fact:
     install_foreman_remote_manifest: "{{
       'http://' in install_foreman_manifest_path or

@@ -1,7 +1,8 @@
 ---
 - name: "APPLICATION | Update installer cmd"
   set_fact:
-    install_foreman_installer_cmd: "{{ install_foreman_installer_cmd }}
+    install_foreman_installer_cmd: >
+      "{{ install_foreman_installer_cmd }}
       --{{ item.key }}='{{ item.value }}'"
   loop: "{{ install_foreman_answers | dict2items }}"
 

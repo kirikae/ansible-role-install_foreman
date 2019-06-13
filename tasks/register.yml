@@ -7,7 +7,7 @@
     state: present
 
 - name: "REGISTER | Check for existing subscription"
-  shell: |
+  shell: >
     /usr/sbin/subscription-manager list
     --consumed
     --matches='Satellite*'
@@ -17,7 +17,7 @@
     - skip_ansible_lint # ANSIBLE0012
 
 - name: "REGISTER | Get RHN Satellite Pool ID"
-  shell: |
+  shell: >
     /usr/sbin/subscription-manager list
     --all
     --available
