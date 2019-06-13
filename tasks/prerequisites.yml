@@ -13,4 +13,3 @@
     dest: /etc/hosts
     regexp: '{{ ansible_default_ipv4['address'] }}.*{{ install_foreman_hostname_fqdn }} {{ install_foreman_hostname_fqdn.split(".")[0] }}'
     line: '{{ ansible_default_ipv4['address'] }}{{ '\t' }}{{ install_foreman_hostname_fqdn }} {{ install_foreman_hostname_fqdn.split(".")[0] }}'
-
