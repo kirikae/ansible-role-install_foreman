@@ -2,11 +2,11 @@
 - name: "PACKAGES | Install the Foreman packages"
   package:
     name: "{{ install_foreman_packages + install_foreman_extra_packages + install_foreman_plugin_packages }}"
-    state: latest
+    state: present
   when: not(install_foreman_satellite |bool)
 
 - name: "PACKAGES | Install the Satellite packages"
   package:
     name: "{{ install_foreman_satellite_packages + install_foreman_satellite_extra_packages + install_foreman_satellite_plugin_packages }}"
-    state: latest
+    state: present
   when: install_foreman_satellite |bool
