@@ -2,8 +2,6 @@
 [![Github (license)](https://img.shields.io/github/license/kirikae/ansible-role-install_foreman.svg)](https://github.com/kirikae/ansible-role-install_foreman/blob/master/LICENSE)
 [![Github (issues)](https://img.shields.io/github/issues/kirikae/ansible-role-install_foreman.svg)](https://github.com/kirikae/ansible-role-install_foreman/issues)
 [![Github (pull requests)](https://img.shields.io/github/issues-pr/kirikae/ansible-role-install_foreman.svg)](https://github.com/kirikae/ansible-role-install_foreman/pulls)
-<!-- Travis CI Shields -->
-[![Travis (org)](https://img.shields.io/travis/org/kirikae/ansible-role-install_foreman.svg)](https://travis-ci.org/kirikae/ansible-role-install_foreman)
 <!-- Ansible Shields -->
 [![Ansible (min. version)](https://img.shields.io/badge/dynamic/yaml.svg?label=Min.%20Ansible%20Version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fkirikae%2Fansible-role-install_foreman%2Fmaster%2Fmeta%2Fmain.yml&query=%24.galaxy_info.min_ansible_version&colorB=black)](https://galaxy.ansible.com/while_true_do/install_foreman)
 [![Ansible (platforms)](https://img.shields.io/badge/dynamic/yaml.svg?label=Supported%20OS&url=https%3A%2F%2Fraw.githubusercontent.com%2Fkirikae%2Fansible-role-install_foreman%2Fmaster%2Fmeta%2Fmain.yml&query=galaxy_info.platforms%5B*%5D.name&colorB=black)](https://galaxy.ansible.com/while_true_do/install_foreman)
