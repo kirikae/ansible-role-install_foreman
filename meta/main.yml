@@ -1,0 +1,32 @@
+---
+# meta file for kirikae.install_foreman
+
+galaxy_info:
+  role_name: install_foreman
+  author: Kirikae
+  description: Install and configure The Foreman or Red Hat Satellite 6.
+  license: MIT
+
+  min_ansible_version: 2.7
+
+  # Supported platforms: https://galaxy.ansible.com/api/v1/platforms/
+  # Please also maintain
+  # - molecule/default/molecule.yml
+  # - molecule/default/tests/*
+  platforms:
+    - name: EL
+      versions:
+        - 7
+
+    - name: Fedora
+      versions:
+        - 29
+        - 30
+
+  galaxy_tags:
+    - system
+    - foreman
+    - satellite
+    - provisioning
+
+dependencies: []

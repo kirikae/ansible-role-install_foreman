@@ -1,0 +1,8 @@
+---
+# handlers file for kirikae.install_foreman
+# TODO: Modify file or clear the contents.
+
+- name: restart ServiceName
+  service:
+    name: ServiceName
+    state: restarted

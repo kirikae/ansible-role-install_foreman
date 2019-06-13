@@ -1,0 +1,30 @@
+# TODO: Edit or delete this file
+
+# from Galaxy (with optional version)
+# - src: username.role_name
+#   version: 1.0.0
+
+# from GitHub
+# - src: https://github.com/username/ansible-role-role_name
+
+# from GitHub, overriding the name and specifying a specific tag
+# - src: https://github.com/username/ansible-role-role_name
+#   version: master
+#   name: role_name
+
+# from a webserver, where the role is packaged in a tar.gz
+# - src: https://some.webserver.example.com/files/master.tar.gz
+#   name: yum-role
+
+# from Bitbucket
+# - src: git+http://bitbucket.org/username/git-ansible-galaxy
+#   version: v1.4
+
+# from Bitbucket, alternative syntax and caveats
+# - src: http://bitbucket.org/username/ansible-role-role_name
+#   scm: hg
+
+# from GitLab or other git-based scm
+# - src: git@gitlab.company.com:mygroup/ansible-role-role_name.git
+#   scm: git
+#   version: "0.1" # quoted, so YAML doesn't parse this as a floating-point value

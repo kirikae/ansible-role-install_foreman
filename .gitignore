@@ -1,0 +1,35 @@
+# ansible retry files
+*.retry
+
+# temporary files
+*.swp
+*.swo
+*~
+
+# cache
+**/__pycache__
+
+# packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# logs and databases
+*.log
+*.sql
+*.sqlite
+
+# OS generated files
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# lock files
+*.lock
+package-lock.json
