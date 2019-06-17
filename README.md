@@ -55,6 +55,7 @@ ansible-galaxy install -r requirements.yml
 
 | Variable      | Default     | Comments (type)         |
 | :---          | :---        | :---                    |
+| `install_foreman_manifest`         | `false`     | Key and default value.  |
 | `key`         | `value`     | Key and default value.  |
 
 ### Example Playbook
