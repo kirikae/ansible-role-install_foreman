@@ -4,7 +4,17 @@
 install_foreman_manifest: false
 
 install_foreman_installer_cmd: foreman-installer
-install_foreman_installer_answers: []
+install_foreman_answers:
+  "foreman-initial-organization": "{{ install_foreman_organization }}"
+  "foreman-initial-location": "{{ install_foreman_location }}"
+  "foreman-initial-admin-username": "{{ install_foreman_admin_username }}"
+  "foreman-initial-admin-password": "{{ install_foreman_admin_password }}"
+
+
+install_foreman_organization: ORG
+install_foreman_location: LOCATION
+install_foreman_admin_username: admin
+install_foreman_admin_password: password
 
 install_foreman_hostname_fqdn: "{{ ansible_fqdn }}"
 
