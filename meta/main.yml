@@ -29,5 +29,4 @@ galaxy_info:
     - satellite
     - provisioning
 
-dependencies:
-  - linux-system-roles.timesync
+dependencies: []

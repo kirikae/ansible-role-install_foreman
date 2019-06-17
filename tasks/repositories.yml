@@ -7,5 +7,3 @@
 - name: "REPOSITORIES | Include repository configuration (disconnected)"
   include_tasks: disconnected.yml
   when: not(install_foreman_is_connected |bool)
-
-#- name: "REPOSITORIES | "
