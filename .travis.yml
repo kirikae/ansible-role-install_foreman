@@ -1,4 +1,6 @@
+---
 # https://docs.travis-ci.com/user/customizing-the-build
+
 
 language: python
 services:
@@ -10,6 +12,11 @@ env:
       image: "centos:7"
     - name: "redhat7"
       image: "centos:7"
+    - name: "fedora29"
+      image: "fedora:29"
+    - name: "fedora30"
+      image: "fedora:30"
+      pygroup: "python3"
 
 install:
   - pip install ansible molecule[docker]
