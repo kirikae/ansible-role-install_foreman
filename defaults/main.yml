@@ -4,12 +4,18 @@
 install_foreman_manifest: false
 
 install_foreman_installer_cmd: foreman-installer
+# Answers in key:value pairs. If an argument does not have a value,
+# leave it blank after the ':' for the key.
 install_foreman_answers:
   "foreman-initial-organization": "{{ install_foreman_organization }}"
   "foreman-initial-location": "{{ install_foreman_location }}"
   "foreman-initial-admin-username": "{{ install_foreman_admin_username }}"
   "foreman-initial-admin-password": "{{ install_foreman_admin_password }}"
-
+  "enable-foreman-plugin-ansible":
+  "enable-foreman-cli-ansible":
+  "enable-foreman-plugin-cockpit":
+  "enable-foreman-plugin-openscap":
+  "enable-foreman-compute-libvirt":
 
 install_foreman_organization: ORG
 install_foreman_location: LOCATION
