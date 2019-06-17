@@ -1,6 +1,13 @@
 ---
 # tasks file for kirikae.install_foreman
 
+- name: "MAIN | Include distribution / OS specific variables"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_distribution | lower }}.yml"
+    - "{{ ansible_os_family | lower }}.yml"
+
 - include_tasks: set_facts.yml
 - include_tasks: prerequisites.yml
 - include_tasks: register.yml

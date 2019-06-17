@@ -16,3 +16,12 @@ install_foreman_repos:
       package: "http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
     - name:
       package: "https://yum.theforeman.org/releases/1.22/el7/x86_64/foreman-release.rpm"
+
+install_foreman_ansible_packages:
+  - libselinux-python
+
+install_foreman_packages:
+  - foreman-installer
+
+install_foreman_extra_packages: []
+install_foreman_plugin_packages: []

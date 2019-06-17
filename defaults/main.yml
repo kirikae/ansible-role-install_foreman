@@ -1,2 +1,31 @@
 ---
 # defaults file for kirikae.install_foreman
+
+install_foreman_manifest: false
+
+install_foreman_installer_cmd: foreman-installer
+install_foreman_installer_answers: []
+
+install_foreman_hostname_fqdn: "{{ ansible_fqdn }}"
+
+install_foreman_satellite: false
+
+install_foreman_is_connected: true
+
+install_foreman_version: "1.22"
+
+install_foreman_firewall_ports:
+  - 53/tcp # DNS Server
+  - 53/udp # DNS Server
+  - 67/udp # DHCP Server
+  - 68/udp # DHCP Server
+  - 69/udp # TFTP Server
+  - 80/tcp # HTTP using Apache + Passenger
+  - 443/tcp # HTTPS using Apache + Passenger
+  - 3000/tcp # HTTP using standalone WEBrick service
+  - 3306/tcp # Separate MySQL DB
+  - 5910-5930/tcp # Server VNC Consoles
+  - 5432/tcp # Separate PostgreSQL DB
+  - 8140/tcp # Puppet Master
+  - 8443/tcp # Smart Proxy
+install_foreman_plugin_ports: []
