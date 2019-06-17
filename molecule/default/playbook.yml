@@ -1,5 +1,6 @@
 ---
 - name: Molecule test of install_foreman
   hosts: all
+  become: true
   roles:
     - role: kirikae.install_foreman
