@@ -45,3 +45,20 @@ install_foreman_firewall_ports:
   - 8140/tcp # Puppet Master
   - 8443/tcp # Smart Proxy
 install_foreman_plugin_ports: []
+
+timesync_ntp_servers:
+  - hostname: 0.au.pool.ntp.org
+    iburst: true
+    pool: true
+  - hostname: 1.au.pool.ntp.org
+    iburst: true
+    pool: true
+  - hostname: 2.au.pool.ntp.org
+    iburst: true
+    pool: true
+  - hostname: 3.au.pool.ntp.org
+    iburst: true
+    pool: true
+  - hostname: 4.au.pool.ntp.org
+    iburst: true
+    pool: true

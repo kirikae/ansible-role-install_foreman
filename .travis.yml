@@ -8,6 +8,8 @@ env:
   matrix:
     - name: "centos7"
       image: "centos:7"
+    - name: "redhat7"
+      image: "centos:7"
 
 install:
   - pip install ansible molecule[docker]
