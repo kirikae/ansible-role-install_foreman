@@ -6,10 +6,6 @@
       {% if item.value != None %}--{{ item.key }} '{{ item.value }}'{% else %}--{{ item.key }}{% endif %}"
   loop: "{{ install_foreman_answers | dict2items }}"
 
-- name: "APPLICATION | DEBUG - Show cmd"
-  debug:
-    msg: "{{ install_foreman_installer_cmd }}"
-
 - name: "APPLICATION | Install Foreman / Satellite"
   command: "{{ install_foreman_installer_cmd }}"
   register: install_foreman_installer_cmd_result
