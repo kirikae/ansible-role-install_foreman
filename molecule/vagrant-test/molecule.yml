@@ -1,6 +1,6 @@
 ---
 scenario:
-  name: default
+  name: vagrant-test
   test_sequence:
     - lint
     - destroy
@@ -23,37 +23,41 @@ dependency:
     role-file: requirements.yml
 
 driver:
-  name: docker
+  name: vagrant
+  provider:
+    name: libvirt
 
 platforms:
-  - name: ${name:-instance}
-    image: ${image:-centos:7}
-    command: /usr/sbin/init
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    tmpfs:
-      - /run
-      - /tmp
-    # privileged: true
+  - name: foreman.example.com
+    box: centos/7
+    raw_config_args:
+      - "cpu_mode = 'host-passthrough'"
+    instance_raw_config_args:
+      - "vm.synced_folder './', '/vagrant', disabled: true"
+      - "ssh.insert_key = false"
+      # - "vm.network 'private_network', ip: '192.168.144.222'"
+    memory: 4096
+    private_ip: 192.168.144.222
+    cpus: 2
     groups:
-      - ${pygroup:-python}
-    environment:
-      container: docker
+      - foreman
 
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
-  inventory:
-    group_vars:
-      all:
-        ansible_user: ansible
-      python3:
-        ansible_python_interpreter: /usr/bin/python3
+  options:
+    e: "@ansible-override-vars.yml"
+  playbooks:
+    create: create.yml
+    destroy: destroy.yml
+    prepare: prepare.yml
+  env:
+    ANSIBLE_CONFIG: ../../ansible.cfg
 
 verifier:
   name: testinfra
-  options:
-    v: 1
   lint:
     name: flake8
+  options:
+    v: 1
