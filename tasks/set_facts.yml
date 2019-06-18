@@ -20,3 +20,8 @@
     dest: /etc/ansible/facts.d/install_foreman.fact
     owner: root
     group: root
+  register: local_fact_result
+
+- name: "FACTS | Re-Gather facts"
+  setup:
+  when: local_fact_result is changed
