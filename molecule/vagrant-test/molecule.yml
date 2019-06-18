@@ -46,6 +46,9 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
+    options:
+      exclude:
+        - ../../roles/linux-system-roles.timesync
   options:
     e: "@ansible-override-vars.yml"
   playbooks:

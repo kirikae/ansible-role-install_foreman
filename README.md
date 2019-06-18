@@ -4,9 +4,9 @@
 [![Github (pull requests)](https://img.shields.io/github/issues-pr/kirikae/ansible-role-install_foreman.svg)](https://github.com/kirikae/ansible-role-install_foreman/pulls)
 <!-- [![Built Status](https://travis-ci.org/kirikae/ansible-role-install_foreman.svg?branch-master)](https://travis-ci.org/kirikae/ansible-role-install_foreman) -->
 <!-- Ansible Shields -->
-[![Ansible (min. version)](https://img.shields.io/badge/dynamic/yaml.svg?label=Min.%20Ansible%20Version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fkirikae%2Fansible-role-install_foreman%2Fmaster%2Fmeta%2Fmain.yml&query=%24.galaxy_info.min_ansible_version&colorB=black)](https://galaxy.ansible.com/while_true_do/install_foreman)
-[![Ansible (platforms)](https://img.shields.io/badge/dynamic/yaml.svg?label=Supported%20OS&url=https%3A%2F%2Fraw.githubusercontent.com%2Fkirikae%2Fansible-role-install_foreman%2Fmaster%2Fmeta%2Fmain.yml&query=galaxy_info.platforms%5B*%5D.name&colorB=black)](https://galaxy.ansible.com/while_true_do/install_foreman)
-[![Ansible (tags)](https://img.shields.io/badge/dynamic/yaml.svg?label=Galaxy%20Tags&url=https%3A%2F%2Fraw.githubusercontent.com%2Fkirikae%2Fansible-role-install_foreman%2Fmaster%2Fmeta%2Fmain.yml&query=%24.galaxy_info.galaxy_tags%5B*%5D&colorB=black)](https://galaxy.ansible.com/while_true_do/install_foreman)
+[![Ansible (min. version)](https://img.shields.io/badge/dynamic/yaml.svg?label=Min.%20Ansible%20Version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fkirikae%2Fansible-role-install_foreman%2Fmaster%2Fmeta%2Fmain.yml&query=%24.galaxy_info.min_ansible_version&colorB=black)](https://galaxy.ansible.com/kirikae/install_foreman)
+[![Ansible (platforms)](https://img.shields.io/badge/dynamic/yaml.svg?label=Supported%20OS&url=https%3A%2F%2Fraw.githubusercontent.com%2Fkirikae%2Fansible-role-install_foreman%2Fmaster%2Fmeta%2Fmain.yml&query=galaxy_info.platforms%5B*%5D.name&colorB=black)](https://galaxy.ansible.com/kirikae/install_foreman)
+[![Ansible (tags)](https://img.shields.io/badge/dynamic/yaml.svg?label=Galaxy%20Tags&url=https%3A%2F%2Fraw.githubusercontent.com%2Fkirikae%2Fansible-role-install_foreman%2Fmaster%2Fmeta%2Fmain.yml&query=%24.galaxy_info.galaxy_tags%5B*%5D&colorB=black)](https://galaxy.ansible.com/kirikae/install_foreman)
 
 # Ansible Role: install_foreman
 
