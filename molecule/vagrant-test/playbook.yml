@@ -3,5 +3,4 @@
   hosts: all
   become: true
   roles:
-    - role: linux-system-roles.timesync
     - role: kirikae.install_foreman
