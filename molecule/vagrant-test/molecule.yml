@@ -12,7 +12,7 @@ scenario:
     - idempotence
     - side_effect
     - verify
-    - destroy
+    # - destroy
 
 lint:
   name: yamllint
@@ -28,17 +28,15 @@ driver:
     name: libvirt
 
 platforms:
-  - name: foreman.example.com
+  - name: centos7.example.com
     box: centos/7
     raw_config_args:
       - "cpu_mode = 'host-passthrough'"
     instance_raw_config_args:
       - "vm.synced_folder './', '/vagrant', disabled: true"
       - "ssh.insert_key = false"
-      # - "vm.network 'private_network', ip: '192.168.144.222'"
-    memory: 4096
-    private_ip: 192.168.144.222
-    cpus: 2
+    memory: 8192
+    cpus: 4
     groups:
       - foreman
 
@@ -49,14 +47,16 @@ provisioner:
     options:
       exclude:
         - ../../roles/linux-system-roles.timesync
+  inventory:
+    group_vars:
+      python3:
+        ansible_python_interpreter: /usr/bin/python3
   options:
     e: "@ansible-override-vars.yml"
   playbooks:
     create: create.yml
     destroy: destroy.yml
     prepare: prepare.yml
-  env:
-    ANSIBLE_CONFIG: ../../ansible.cfg
 
 verifier:
   name: testinfra
