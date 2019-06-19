@@ -12,8 +12,11 @@ install_foreman_answers:
   "foreman-admin-username": "{{ install_foreman_admin_username }}"
   "foreman-admin-password": "{{ install_foreman_admin_password }}"
   "enable-foreman-plugin-ansible":
-  "enable-foreman-plugin-openscap":
+  "enable-foreman-proxy-plugin-ansible":
+  "enable-foreman-plugin-remote-execution":
+  "enable-foreman-proxy-plugin-remote-execution-ssh":
   "enable-foreman-compute-libvirt":
+  "enable-foreman-compute-ovirt":
 
 install_foreman_organization: ORG
 install_foreman_location: LOCATION
