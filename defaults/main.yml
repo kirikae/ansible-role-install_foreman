@@ -3,17 +3,15 @@
 
 install_foreman_manifest: false
 
-install_foreman_installer_cmd: foreman-installer
+install_foreman_installer_cmd: "foreman-installer --scenario katello"
 # Answers in key:value pairs. If an argument does not have a value,
 # leave it blank after the ':' for the key.
 install_foreman_answers:
   "foreman-initial-organization": "{{ install_foreman_organization }}"
   "foreman-initial-location": "{{ install_foreman_location }}"
-  "foreman-initial-admin-username": "{{ install_foreman_admin_username }}"
-  "foreman-initial-admin-password": "{{ install_foreman_admin_password }}"
+  "foreman-admin-username": "{{ install_foreman_admin_username }}"
+  "foreman-admin-password": "{{ install_foreman_admin_password }}"
   "enable-foreman-plugin-ansible":
-  "enable-foreman-cli-ansible":
-  "enable-foreman-plugin-cockpit":
   "enable-foreman-plugin-openscap":
   "enable-foreman-compute-libvirt":
 
@@ -28,7 +26,7 @@ install_foreman_satellite: false
 
 install_foreman_is_connected: true
 
-install_foreman_version: "1.22"
+install_foreman_version: "1.20"
 
 install_foreman_firewall_ports:
   - 53/tcp  # DNS Server
@@ -42,8 +40,10 @@ install_foreman_firewall_ports:
   - 3306/tcp  # Separate MySQL DB
   - 5910-5930/tcp  # Server VNC Consoles
   - 5432/tcp  # Separate PostgreSQL DB
+  - 5647/tcp  # qdrouterd
   - 8140/tcp  # Puppet Master
   - 8443/tcp  # Smart Proxy
+  - 9090/tcp  # Smart Proxy for Katello
 install_foreman_plugin_ports: []
 
 timesync_ntp_servers:

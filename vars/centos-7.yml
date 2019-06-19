@@ -3,19 +3,30 @@
 
 install_foreman_repos:
   "1.20":
-    - name:
+    - name: Puppet6 Repository
       package: "https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm"
-    - name:
+    - name: EPEL
       package: "http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
-    - name:
+    - name: Foreman Repository
       package: "https://yum.theforeman.org/releases/1.20/el7/x86_64/foreman-release.rpm"
+    - name: Katello Repository
+      package: "http://fedorapeople.org/groups/katello/releases/yum/3.10/katello/el7/x86_64/katello-repos-latest.rpm"
+    - name: Extra Packages
+      package:
+        - foreman-release-scl
+        - python2-django
   "1.22":
-    - name:
+    - name: Puppet6 Repository
       package: "https://yum.puppetlabs.com/puppet6/puppet6-release-el-7.noarch.rpm"
-    - name:
+    - name: EPEL
       package: "http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
-    - name:
+    - name: Foreman Repository
       package: "https://yum.theforeman.org/releases/1.22/el7/x86_64/foreman-release.rpm"
+    - name: Katello Repository
+      package: "https://fedorapeople.org/groups/katello/releases/yum/3.12/katello/el7/x86_64/katello-repos-latest.rpm"
+    - name: Extra Packages
+      package:
+        - foreman-release-scl
 
 install_foreman_ansible_packages:
   - libselinux-python
@@ -24,4 +35,5 @@ install_foreman_packages:
   - foreman-installer
 
 install_foreman_extra_packages: []
-install_foreman_plugin_packages: []
+install_foreman_plugin_packages:
+  - katello
