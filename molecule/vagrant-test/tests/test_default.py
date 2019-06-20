@@ -1,6 +1,7 @@
 # TODO: Modify below tests with actual ones.
 
 import os
+import pytest
 
 import testinfra.utils.ansible_runner
 
@@ -8,7 +9,27 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
 
-def test_packages(host):
+@pytest.fixture(scope="module")
+def AnsibleDistribution(Ansible):
+
+    return Ansible("setup")["ansible_facts"]["ansible_distribution"]
+
+
+@pytest.fixture(scope="module")
+def AnsibleOSFamily(Ansible):
+
+    return Ansible("setup")["ansible_facts"]["ansible_os_family"]
+
+
+@pytest.fixture(scope="module")
+def AnsibleVars(host):
+    ansible_vars = host.ansible.get_variables()
+
+    print(ansible_vars)
+    return ansible_vars
+
+
+def test_packages(host, AnsibleVars):
     pkg = host.package("foreman-installer")
 
     assert pkg.is_installed
