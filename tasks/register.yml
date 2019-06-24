@@ -44,6 +44,7 @@
 
 - name: "REGISTER | Enable the Satellite Repositories"
   rhsm_repository:
-    name: "{{ install_foreman_satellite_repos[install_foreman_satellite_version | string] }}"
+    name: "{{ item['repo_name'] }}"
     purge: true
     state: enabled
+  loop: "{{ install_foreman_repos[install_foreman_version | string] | flatten(levels=1) }}"

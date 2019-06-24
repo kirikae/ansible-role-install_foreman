@@ -16,6 +16,10 @@ scenario:
 
 lint:
   name: yamllint
+  options:
+    config-data:
+      ignore: |
+        vault.yml
 
 dependency:
   name: galaxy
@@ -39,6 +43,17 @@ platforms:
     cpus: 4
     groups:
       - foreman
+  - name: rhel7.example.com
+    box: kirikae/rhel7
+    raw_config_args:
+      - "cpu_mode = 'host-passthrough'"
+    instance_raw_config_args:
+      - "vm.synced_folder './', '/vagrant', disabled: true"
+      - "ssh.insert_key = false"
+    memory: 8192
+    cpus: 4
+    groups:
+      - satellite
 
 provisioner:
   name: ansible
@@ -47,8 +62,17 @@ provisioner:
     options:
       exclude:
         - ../../roles/linux-system-roles.timesync
+        - vault.yml
   inventory:
     group_vars:
+      satellite:
+        install_foreman_satellite: true
+        install_foreman_version: "6.5"
+        install_foreman_installer_cmd: "satellite-installer --scenario satellite"
+        install_foreman_is_connected: true
+        install_foreman_rhn_username: "{{ rh_username }}"
+        install_foreman_rhn_password: "{{ rh_password }}"
+        install_foreman_satellite_pool_id: "{{ rh_sub_pool_ids['virtual'][0]['id'] }}"
       python3:
         ansible_python_interpreter: /usr/bin/python3
   options:

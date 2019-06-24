@@ -1,0 +1,44 @@
+---
+# RHEL-7 specific variables
+
+install_foreman_repos:
+  "6.3":
+    - name: RHEL7 Server RPMs
+      repo_name: rhel-7-server-rpms
+    - name:
+      repo_name: rhel-server-rhscl-7-rpms
+    - name:
+      repo_name: rhel-7-server-satellite-6.3-rpms
+    - name:
+      repo_name: rhel-7-server-satellite-6.3-puppet4.rpms
+  "6.4":
+    - name: RHEL7 Server RPMs
+      repo_name: rhel-7-server-rpms
+    - name: RHEL7 SCL RPMs
+      repo_name: rhel-server-rhscl-7-rpms
+    - name: RHEL7 Satellite 6.4 RPMs
+      repo_name: rhel-7-server-satellite-6.4-rpms
+    - name: RHEL7 Satellite 6 Maitenance RPMs
+      repo_name: rhel-7-server-satellite-maintenance-6-rpms
+    - name: RHEL7 Ansible 2.6
+      repo_name: rhel-7-server-ansible-2.6-rpms
+  "6.5":
+    - name: RHEL7 Server RPMs
+      repo_name: rhel-7-server-rpms
+    - name: RHEL7 SCL RPMs
+      repo_name: rhel-server-rhscl-7-rpms
+    - name: RHEL7 Satellite 6.5 RPMs
+      repo_name: rhel-7-server-satellite-6.5-rpms
+    - name: RHEL7 Satellite 6 Maitenance RPMs
+      repo_name: rhel-7-server-satellite-maintenance-6-rpms
+    - name: RHEL7 Ansible 2.6
+      repo_name: rhel-7-server-ansible-2.6-rpms
+
+install_foreman_ansible_packages:
+  - libselinux-python
+
+install_foreman_packages:
+  - satellite
+
+install_foreman_extra_packages: []
+install_foreman_plugin_packages: []

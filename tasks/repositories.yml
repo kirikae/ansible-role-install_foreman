@@ -1,9 +1,9 @@
 ---
 
 - name: "REPOSITORIES | Include repository configuration (connected)"
-  include_tasks: connected.yml
+  include_tasks: foreman_connected.yml
   when: install_foreman_is_connected |bool
 
 - name: "REPOSITORIES | Include repository configuration (disconnected)"
-  include_tasks: disconnected.yml
+  include_tasks: foreman_disconnected.yml
   when: not(install_foreman_is_connected |bool)
