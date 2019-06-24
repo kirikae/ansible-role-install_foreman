@@ -1,5 +1,5 @@
 ---
-- name: "CONNECTED | Install the repos"
+- name: "FOREMAN CONNECTED | Install the repos"
   package:
     name: "{{ item['package'] }}"
     state: present
