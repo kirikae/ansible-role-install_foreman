@@ -10,10 +10,20 @@
 
 - include_tasks: set_facts.yml
 - include_tasks: prerequisites.yml
-- include_tasks: register.yml
+- include_tasks: connected_register.yml
   when: >
     (install_foreman_satellite |bool) and
     (install_foreman_is_connected |bool)
+- include_tasks: disconnected_register.yml
+  when: >
+    (install_foreman_satellite |bool) and
+    not(install_foreman_is_connected |bool) and
+    not(install_foreman_satellite_from_iso |bool)
+- include_tasks: disconnected_repositories.yml
+  when: >
+    (install_foreman_satellite | bool) and
+    not(install_foreman_is_connected |bool) and
+    (install_foreman_satellite_from_iso |bool)
 - include_tasks: repositories.yml
   when: >
     not(install_foreman_satellite |bool)
