@@ -19,11 +19,6 @@
     (install_foreman_satellite |bool) and
     not(install_foreman_is_connected |bool) and
     not(install_foreman_satellite_from_iso |bool)
-- include_tasks: disconnected_repositories.yml
-  when: >
-    (install_foreman_satellite | bool) and
-    not(install_foreman_is_connected |bool) and
-    (install_foreman_satellite_from_iso |bool)
 - include_tasks: repositories.yml
   when: >
     not(install_foreman_satellite |bool)
