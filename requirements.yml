@@ -1,5 +1,6 @@
 ---
 - src: linux-system-roles.timesync
+- src: zaxos.lvm-ansible-role
 # TODO: Edit or delete this file
 
 # from Galaxy (with optional version)
