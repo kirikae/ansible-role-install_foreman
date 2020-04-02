@@ -8,20 +8,35 @@
     - "{{ ansible_distribution | lower }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
 
-- include_tasks: set_facts.yml
-- include_tasks: prerequisites.yml
-- include_tasks: connected_register.yml
+- name: "MAIN | Include set_facts.yml"
+  include_tasks: set_facts.yml
+
+- name: "MAIN | Include prerequisites.yml"
+  include_tasks: prerequisites.yml
+
+- name: "MAIN | Include connected_register.yml"
+  include_tasks: connected_register.yml
   when: >
     (install_foreman_satellite |bool) and
     (install_foreman_is_connected |bool)
-- include_tasks: disconnected_register.yml
+
+- name: "MAIN | Include disconnected_register.yml"
+  include_tasks: disconnected_register.yml
   when: >
     (install_foreman_satellite |bool) and
     not(install_foreman_is_connected |bool) and
     not(install_foreman_satellite_from_iso |bool)
-- include_tasks: repositories.yml
+
+- name: "MAIN | Include repositories.yml"
+  include_tasks: repositories.yml
   when: >
     not(install_foreman_satellite |bool)
-- include_tasks: firewall.yml
-- include_tasks: packages.yml
-- include_tasks: application.yml
+
+- name: "MAIN | Include firewall.yml"
+  include_tasks: firewall.yml
+
+- name: "MAIN | Include packages.yml"
+  include_tasks: packages.yml
+
+- name: "MAIN | Include application.yml"
+  include_tasks: application.yml

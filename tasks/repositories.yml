@@ -4,10 +4,12 @@
   include_tasks: foreman_connected.yml
   when: >
     (install_foreman_is_connected |bool) and
-    not(install_foreman_satellite |bool)
+    (install_foreman_satellite |bool) and
+    not(install_foreman_activationkey is undefined)
 
 - name: "REPOSITORIES | Include repository configuration (disconnected)"
   include_tasks: foreman_disconnected.yml
   when: >
-    not(install_foreman_is_connected |bool) and
-    not(install_foreman_satellite |bool)
+    (install_foreman_is_connected |bool) and
+    (install_foreman_satellite |bool) and
+    not(install_foreman_activationkey is undefined)

@@ -4,7 +4,8 @@
     install_foreman_remote_manifest: "{{
       'http://' in install_foreman_manifest_path or
       'ftp://' in install_foreman_manifest_path }}"
-  when: install_foreman_manifest | bool
+  when: >
+    (install_foreman_manifest | bool)
 
 - name: "FACTS | Ensure /etc/ansible/facts.d exists"
   file:
@@ -24,4 +25,5 @@
 
 - name: "FACTS | Re-Gather facts"
   setup:
-  when: local_fact_result is changed
+  when: >
+    local_fact_result is changed

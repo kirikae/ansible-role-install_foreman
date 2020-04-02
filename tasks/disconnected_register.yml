@@ -6,8 +6,7 @@
     activationkey: "{{ install_foreman_activationkey }}"
   register: install_foreman_activation
   when: >
-    (install_foreman_activationkey is defined) and
-    not(install_foreman_activationkey |bool)
+    (install_foreman_activationkey is defined)
 
 - name: "REGISTER | Register the system with Satellite / The Foreman (User / Pass)"
   redhat_subscription:
@@ -29,7 +28,7 @@
     | awk '/Pool ID/ {print $3}'
   register: install_foreman_satellite_subscription
   when: >
-    (install_foreman_userpass is defined)
+    (install_foreman_userpass is defined) and
     (install_foreman_activation is undefined)
   tags:
     - skip_ansible_lint  # ANSIBLE0012
@@ -43,8 +42,10 @@
     | awk '/Pool ID/ {print $3}'
     | head -1
   register: install_foreman_satellite_pool_id_result
+  changed_when: false
   when: >
-    (install_foreman_satellite_pool_id is undefined)
+    (install_foreman_satellite_pool_id is undefined) and
+    (install_foreman_activation is undefined)
   tags:
     - skip_ansible_lint  # ANSIBLE0012
 
@@ -53,7 +54,8 @@
     install_foreman_satellite_pool_id: "{{
       install_foreman_satellite_pool_id_result.stdout }}"
   when: >
-    (install_foreman_satellite_pool_id is undefined)
+    (install_foreman_satellite_pool_id is undefined) and
+    (install_foreman_activation is undefined)
 
 - name: "REGISTER | Subscribe to the Satellite Pool"
   redhat_subscription:
@@ -62,14 +64,5 @@
     pool_ids: "{{ install_foreman_satellite_pool_id }}"
     state: present
   when: >
-    (install_foreman_satellite_pool_id is defined)
-
-- name: "REGISTER | Enable the Satellite Repositories"
-  rhsm_repository:
-    name: "{{ item['repo_name'] }}"
-    purge: true
-    state: enabled
-  loop: "{{ install_foreman_repos[install_foreman_version | string] | flatten(levels=1) }}"
-  when: >
-    (install_foreman_activationkey is defined) and
-    not(install_foreman_activationkey |bool)
+    (install_foreman_satellite_pool_id is defined) and
+    (install_foreman_activation is undefined)

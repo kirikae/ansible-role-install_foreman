@@ -1,4 +1,9 @@
 ---
+- name: "DEBUG | Show all variables/facts for the hosts"
+  debug:
+    var: hostvars[inventory_hostname]
+    verbosity: 2
+
 - name: "APPLICATION | Update installer cmd"
   set_fact:
     install_foreman_installer_cmd: "{{
@@ -10,8 +15,8 @@
   command: "{{ install_foreman_installer_cmd }}"
   register: install_foreman_installer_cmd_result
   when: >
-    install_foreman_installer_cmd != ansible_local['install_foreman']['previous_cmd']
-    or ansible_local['install_foreman']['previous_cmd'] is undefined
+    (install_foreman_installer_cmd != ansible_local['install_foreman']['previous_cmd']) or
+    (ansible_local['install_foreman']['previous_cmd'] is undefined)
 
 - name: "APPLICATION | Update install_foreman local_fact"
   lineinfile:
